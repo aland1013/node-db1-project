@@ -46,4 +46,20 @@ router.put('/:id', (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+
+  db('accounts')
+    .where({ id })
+    .del()
+    .then((count) => {
+      if (count > 0) {
+        res.status(200).json({ data: count });
+      } else {
+        res.status(404).json({ message: 'there was no account to delete' });
+      }
+    })
+    .catch((err) => console.log(err));
+});
+
 module.exports = router;
