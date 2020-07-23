@@ -22,4 +22,4 @@ UPDATE Customers SET PostalCode = 11122 WHERE CustomerName = 'The Shire';
 SELECT DISTINCT City from Customers;
 
 -- (Stretch) Find all suppliers who have names longer than 20 characters. You can use `length(SupplierName)` to get the length of the name
-SELECT * FROM Suppliers WHERE length(SupplierName) >= 20;
+SELECT * FROM Suppliers WHERE length(SupplierName) > 20;
