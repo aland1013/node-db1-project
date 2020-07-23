@@ -5,8 +5,12 @@ const db = require('../data/dbConfig');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  // SELECT * FROM accounts;
+  const { limit, sortby, sortdir } = req.query;
+
+  // SELECT * FROM accounts ORDER BY sortby sortdir;
   db('accounts')
+    .limit(limit)
+    .orderBy(sortby, sortdir)
     .then((accounts) => res.status(200).json({ data: accounts }))
     .catch((err) => console.log(err));
 });
